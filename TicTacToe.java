@@ -48,13 +48,37 @@ public class TicTacToe {
 
 		return 0;
 	}
-	
+
+	public int heuristic(char board[][]){
+	    int sum=0;
+		for(int i=0;i<3;i++){
+		    if(board[i][0]!='o'&&board[i][1]!='o'&&board[i][2]!='o')sum++;
+
+            if(board[0][i]!='o'&&board[1][i]!='o'&&board[2][i]!='o')sum++;
+        }
+
+        if(board[0][0]!='o'&&board[1][1]!='o'&&board[2][2]!='o')sum++;
+        if(board[0][2]!='o'&&board[1][1]!='o'&&board[2][0]!='o')sum++;
+
+        // enemy
+        for(int i=0;i<3;i++){
+		    if(board[i][0]!='x'&&board[i][1]!='x'&&board[i][2]!='x')sum--;
+
+            if(board[0][i]!='x'&&board[1][i]!='x'&&board[2][i]!='x')sum--;
+        }
+
+        if(board[0][0]!='x'&&board[1][1]!='x'&&board[2][2]!='x')sum--;
+        if(board[0][2]!='x'&&board[1][1]!='x'&&board[2][0]!='x')sum--;
+
+        return sum;
+
+	}
 	public int minimax(char board[][], int depth, boolean isMaxTurn) {
 		
 		//write code here
 
 		int evalu=evaluateBoard(board);
-		if(evalu==10||evalu==-10)return evalu;
+		if(evalu==10||evalu==-10||depth>4)return evalu+heuristic(board);
 		if(checkComplete(board))return 0;
 
 		if(isMaxTurn){
