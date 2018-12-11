@@ -1,4 +1,4 @@
-package com.company.XO;
+package com.company.xo_minmax;
 
 public class TicTacToe {
 	
@@ -73,6 +73,7 @@ public class TicTacToe {
         return sum;
 
 	}
+
 	public int minimax(char board[][], int depth, boolean isMaxTurn) {
 		
 		//write code here

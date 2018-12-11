@@ -1,4 +1,4 @@
-package com.company.XO;
+package com.company.xo_minmax;
 
 public class Cell {
 	public int x;
